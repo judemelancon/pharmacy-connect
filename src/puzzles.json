@@ -1,0 +1,68 @@
+[
+    {
+        "slug": "test",
+        "name": "Test",
+        "groups": [
+            {
+                "connection": "Greek Letters",
+                "items": [ "Alpha", "Beta", "Gamma", "Lambda" ]
+            },
+            {
+                "connection": "ICAO Phonetic Alphabet Letters",
+                "items": [ "Alfa", "Bravo", "Foxtrot", "Sierra" ]
+            },
+            {
+                "connection": "Letter Homophones",
+                "items": [ "Bee", "See", "Jay", "Queue" ]
+            },
+            {
+                "connection": "Whitespace Characters",
+                "items": [ "Em", "En", "Thin", "Hair" ]
+            }
+        ]
+    },
+    {
+        "slug": "warmup",
+        "name": "Warm Up",
+        "groups": [
+            {
+                "connection": "Antibiotics",
+                "items": [ "Amoxicillin", "Clindamycin", "Doxycycline", "Gentamicin" ]
+            },
+            {
+                "connection": "Anticancer Monoclonal Antibodies",
+                "items": [ "Alemtuzumab", "Cetuximab", "Pembrolizumab", "Rituximab" ]
+            },
+            {
+                "connection": "HMG-CoA Reductase Inhibitors",
+                "items": [ "Simvastatin", "Atorvastatin", "Lovastatin", "Pravastatin" ]
+            },
+            {
+                "connection": "B Vitamins",
+                "items": [ "Niacin", "Pyridoxine", "Riboflavin", "Thiamine" ]
+            }
+        ]
+    },
+    {
+        "slug": "2024",
+        "name": "2024",
+        "groups": [
+            {
+                "connection": "A",
+                "items": [ "A", "AA", "AAA", "AAAA" ]
+            },
+            {
+                "connection": "B",
+                "items": [ "B", "BB", "BBB", "BBBB" ]
+            },
+            {
+                "connection": "C",
+                "items": [ "C", "CC", "CCC", "CCCC" ]
+            },
+            {
+                "connection": "D",
+                "items": [ "D", "DD", "DDD", "DDDD" ]
+            }
+        ]
+    }
+]

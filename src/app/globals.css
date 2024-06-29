@@ -1,0 +1,53 @@
+:root {
+  --max-width: 1200px;
+  --border-radius: 12px;
+
+  --kansas-blue: #0051ba;
+  --crimson: #e8000d;
+  --jayhawk-yellow: #ffc82d;
+  --signature-gray: #85898a;
+  --steam: #dde5ed;
+  --limestone: #d7d2cb;
+  --limestone-step-2: #f5f4f2;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-size: 20px;
+}
+
+body {
+  color: black;
+  background: linear-gradient(to bottom right, transparent, var(--limestone-step-2)) var(--limestone);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+
+  &[href] {
+    color: var(--kansas-blue);
+  }
+}
+
+h1 {
+  font-size: 200%;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 150%;
+  font-weight: 600;
+}
+
+ul {
+  font-size: 125%;
+}
