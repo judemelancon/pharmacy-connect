@@ -13,7 +13,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.png" />
+        <link rel="icon" href={`${process.env.BASE_PATH}/favicon.png`} />
       </head>
       <body className={defaultFont.className}>
         {children}
