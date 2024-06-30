@@ -1,60 +1,33 @@
 .items {
   display: grid;
-  grid-template-columns: repeat(2, minmax(48%, auto));
+  grid-template-columns: repeat(2, minmax(48%, 1fr));
   column-gap: 4%;
   row-gap: 2vh;
   max-width: 100%;
-  width: var(--max-width);
+  width: 60vh;
   min-height: 400px;
   font-size: 12px;
 
   @media (min-width: 250px) {
     /* --four-across-breakpoint */
-    grid-template-columns: repeat(4, minmax(22%, auto));
-    column-gap: 4vw;
-    row-gap: 4vw;
-    min-height: 250px;
-    max-height: 100vw;
-    height: 50vh;
-    font-size: 7px;
-  }
-
-  @media (min-width: 280px) {
-    font-size: 8px;
-  }
-
-  @media (min-width: 320px) {
-    font-size: 9px;
-  }
-
-  @media (min-width: 360px) {
-    font-size: 10px;
-  }
-
-  @media (min-width: 420px) {
-    font-size: 12px;
+    grid-template-columns: repeat(4, minmax(22%, 1fr));
+    grid-template-rows: repeat(4, 1fr);
+    gap: 4vw;
+    aspect-ratio: 1;
+    min-height: unset;
   }
 
   @media (min-width: 480px) {
-    font-size: 14px;
+    gap: 1em;
   }
 
-  @media (min-width: 500px) {
-    font-size: 100%;
-    column-gap: 1em;
-    row-gap: 1em;
-  }
+  @media (orientation: landscape) {
+    width: 80vh;
 
-  @media (min-width: 700px) {
-    font-size: 125%;
-  }
-
-  @media (min-width: 900px) {
-    font-size: 150%;
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 180%;
+    @media (min-height: 600px) {
+      column-gap: 1em;
+      row-gap: 1em;
+    }
   }
 }
 
@@ -65,9 +38,17 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  padding: 2px;
   border-radius: var(--tiny-border-radius);
   font-size: 100%;
   color: black;
+
+  @media (min-width: 250px) {
+    font-size: clamp(7px, 800%, 0.5*min(5vw, 3vh));
+    @media (orientation: landscape) {
+      font-size: clamp(7px, 800%, 0.5*min(5vw, 4vh));
+    }
+  }
 
   @media (min-width: 300px) {
     border-radius: var(--small-border-radius);
@@ -79,11 +60,16 @@
 }
 
 .group {
+  transition: opacity 3s ease-out;
   grid-column-end: span 2;
 
   @media (min-width: 250px) {
     /* --four-across-breakpoint */
     grid-column-end: span 4;
+  }
+
+  &.newGroup {
+    opacity: 0;
   }
 
   &.group-0 {
@@ -121,6 +107,11 @@
   &.active {
     background: #ffffffa0;
   }
+
+  @media (min-width: 250px) {
+    /* --four-across-breakpoint */
+    aspect-ratio: 1;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -140,4 +131,12 @@
 
 .strikes {
   font-size: 200%;
+
+  @media (min-width: 300px) {
+    font-size: 300%;
+  }
+
+  @media (min-width: 500px) {
+    font-size: 400%;
+  }
 }
