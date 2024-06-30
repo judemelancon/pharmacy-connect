@@ -10,6 +10,7 @@
   --signature-gray: #85898a;
   --steam: #dde5ed;
   --limestone: #d7d2cb;
+  --limestone-step-1: #dfdbd5;
   --limestone-step-2: #f5f4f2;
 }
 
@@ -34,7 +35,7 @@ body {
 
 body {
   color: black;
-  background: linear-gradient(to bottom right, transparent, var(--limestone-step-2)) var(--limestone);
+  background: linear-gradient(to bottom right, var(--limestone), var(--limestone-step-1), var(--limestone-step-2));
 }
 
 main,
