@@ -1,7 +1,9 @@
 .qrCodeHolder {
   display: flex;
   justify-content: center;
+  max-width: 80vh;
   width: 100%;
+  max-height: 80vh;
   height: auto;
 
   @media (min-width: 400px) {
@@ -23,6 +25,6 @@
 
 .qrCode {
   width: 100%;
-  max-width: 900px;
+  max-width: 720px;
   height: auto;
 }

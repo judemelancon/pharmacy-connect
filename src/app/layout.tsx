@@ -5,7 +5,7 @@ import "./globals.css";
 const defaultFont = Noto_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'Pharmacy Connect',
+  title: 'OncRx Connect',
   description: 'This is a version of the Connecting Wall or Connections specific to a pharmacy trivia competition.'
 };
 

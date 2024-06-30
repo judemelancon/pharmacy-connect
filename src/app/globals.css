@@ -1,5 +1,7 @@
 :root {
   --max-width: 1200px;
+  --tiny-border-radius: 6px;
+  --small-border-radius: 10px;
   --border-radius: 12px;
 
   --kansas-blue: #0051ba;
@@ -35,22 +37,26 @@ body {
   background: linear-gradient(to bottom right, transparent, var(--limestone-step-2)) var(--limestone);
 }
 
-main {
+main,
+footer {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  padding: 0.5rem;
-  min-height: 100vh;
+  padding: 8px;
 
   @media (min-width: 400px) {
-    padding: 1rem;
+    padding: 16px;
   }
   
   @media (min-width: 600px) {
     gap: 2rem;
-    padding: 2rem;
+    padding: 24px;
   }
+}
+
+main {
+  min-height: 95vh;
 }
 
 a {
