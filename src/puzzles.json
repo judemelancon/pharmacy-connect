@@ -2,6 +2,7 @@
     {
         "slug": "test",
         "name": "Test",
+        "secret": true,
         "groups": [
             {
                 "connection": "Greek Letters",

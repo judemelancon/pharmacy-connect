@@ -10,6 +10,7 @@ export type IndexedGroup = Group & {
 export type Puzzle = {
     slug: string;
     name: string;
+    secret?: boolean;
     groups: Group[];
 };
 
