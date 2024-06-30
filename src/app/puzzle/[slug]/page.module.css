@@ -1,13 +1,4 @@
 .main {
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  padding: 4rem;
-  min-height: 100vh;
-}
-
-.error {
-  font-size: 150%;
-  color: var(--crimson);
+  padding: 0.5rem;
 }
