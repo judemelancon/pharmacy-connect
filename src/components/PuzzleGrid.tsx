@@ -6,16 +6,20 @@ import styles from "./PuzzleGrid.module.css";
 import { Puzzle, IndexedGroup, Item } from "@/types";
 import shuffle from "@/util/shuffle";
 
+const TotalItems = 16;
 const InitialStrikes = 4;
 
 export default function PuzzleGrid({ puzzle }: Readonly<{ puzzle: Puzzle }>) {
+    const [initialized, setInitialized] = useState(false);
     const [unsolvedItems, setUnsolvedItems] = useState<Item[]>(extractItems(puzzle));
     const [solvedGroups, setSolvedGroups] = useState<IndexedGroup[]>([]);
+    const [showingIncorrectGuess, setShowingIncorrectGuess] = useState(false);
     const [strikes, setStrikes] = useState(InitialStrikes);
 
     useEffect(() => {
         // Shuffling at initialization time produces hydration errors.
         setUnsolvedItems(previous => shuffle([...previous]));
+        setInitialized(true);
     }, []);
 
     useEffect(() => {
@@ -27,13 +31,21 @@ export default function PuzzleGrid({ puzzle }: Readonly<{ puzzle: Puzzle }>) {
                 setSolvedGroups(previous => [...previous, { ...puzzle.groups[matchingGroupIndex], index: matchingGroupIndex }]);
             }
             else {
-                for (const item of activeItems)
-                    item.active = false;
-                setUnsolvedItems(previous => [...previous]);
                 setStrikes(previous => previous - 1);
+                setShowingIncorrectGuess(true);
             }
         }
     }, [unsolvedItems, puzzle.groups]);
+
+    useEffect(() => {
+        if (!showingIncorrectGuess)
+            return;
+        const timeoutId = setTimeout(() => {
+            setUnsolvedItems(previous => previous.map(item => ({ ...item, active: false })));
+            setShowingIncorrectGuess(false);
+        }, 1000);
+        return () => clearTimeout(timeoutId);
+    }, [showingIncorrectGuess]);
 
     const handleItemClick = useCallback(
         (target: Item) => {
@@ -46,22 +58,31 @@ export default function PuzzleGrid({ puzzle }: Readonly<{ puzzle: Puzzle }>) {
 
     return (<>
         <div className={classNames(styles.grid, styles.items)}>
-            {solvedGroups.map(group => (
-                <div key={group.connection} className={classNames(styles.group, styles[`group-${group.index}`])}>
-                    <span className={styles.connection}>{group.connection}</span>
-                    <span className={styles.solvedItems}>{group.items.join(', ')}</span>
-                </div>
-            ))}
-            {unsolvedItems.map(item => (
-                <button
-                    key={item.text}
-                    className={classNames(styles.item, item.active && styles.active, strikes && styles.todo)}
-                    disabled={!strikes}
-                    onClick={!strikes ? undefined : e => handleItemClick(item)}>
-                    {item.text}
-                </button>
-            ))}
-        </div>
+            {initialized
+                ?
+                <>
+                    {solvedGroups.map(group => (
+                        <div key={group.connection} className={classNames(styles.group, styles[`group-${group.index}`])}>
+                            <span className={styles.connection}>{group.connection}</span>
+                            <span className={styles.solvedItems}>{group.items.join(', ')}</span>
+                        </div>
+                    ))}
+                    {unsolvedItems.map(item => (
+                        <button
+                            key={item.text}
+                            className={classNames(styles.item, item.active && styles.active, strikes && styles.todo)}
+                            disabled={!strikes}
+                            onClick={!strikes ? undefined : e => handleItemClick(item)}>
+                            <span className={classNames(item.active && showingIncorrectGuess && styles.guessedIncorrectly)}>
+                                {item.text}
+                            </span>
+                        </button>
+                    ))}
+                </>
+                :
+                [...Array(TotalItems)].map((_, i) => <button key={`__temporary_${i}`} className={classNames(styles.item, styles.todo)} disabled></button>)
+            }
+        </div >
         <div className={styles.strikes}>
             <span>{[...Array(InitialStrikes)].map((_, i) => i >= strikes ? '😞' : '😏')}</span>
         </div>

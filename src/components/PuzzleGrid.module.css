@@ -16,6 +16,7 @@
     aspect-ratio: 1;
     min-height: unset;
     font-size: clamp(7px, 800%, 0.5*min(5vw, 3vh));
+
     @media (orientation: landscape) {
       font-size: clamp(7px, 800%, 0.5*min(5vw, 4vh));
     }
@@ -56,8 +57,37 @@
   }
 }
 
+@keyframes arrive {
+  from {
+    opacity: 0.25;
+  }
+}
+
+@keyframes happiness {
+  to {
+    translate: 0 -100vh;
+    opacity: 0;
+    display: none;
+  }
+}
+
+@keyframes sadness {
+  25% {
+    rotate: 15deg;
+    scale: 0.9;
+  }
+
+  50% {
+    scale: 0.8;
+  }
+
+  75% {
+    rotate: -15deg;
+    scale: 0.9;
+  }
+}
+
 .group {
-  transition: opacity 3s ease-out;
   grid-column-end: span 2;
 
   @media (min-width: 250px) {
@@ -65,8 +95,8 @@
     grid-column-end: span 4;
   }
 
-  &.newGroup {
-    opacity: 0;
+  @media not prefers-reduced-motion {
+    animation: 3s arrive;
   }
 
   &.group-0 {
@@ -94,31 +124,47 @@
   color: black;
   transition: background 500ms ease-in, border 250ms ease-out;
 
+  @media (min-width: 250px) {
+    /* --four-across-breakpoint */
+    aspect-ratio: 1;
+  }
+
+  @media not prefers-reduced-motion {
+    animation: 1s arrive;
+  }
+
   &:disabled {
     color: black;
   }
 
   &.todo {
     border: 1px solid black;
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        background: #ffffff80;
+        border-color: white;
+
+        &.active {
+          background: var(--steam);
+        }
+      }
+    }
   }
 
   &.active {
     background: var(--steam);
   }
 
-  @media (min-width: 250px) {
-    /* --four-across-breakpoint */
-    aspect-ratio: 1;
+  .guessedCorrectly {
+    @media not prefers-reduced-motion {
+      animation: 2s happiness;
+    }
   }
-}
 
-@media (hover: hover) and (pointer: fine) {
-  .item.todo:hover {
-    background: #ffffff80;
-    border-color: white;
-
-    &.active {
-      background: var(--steam);
+  .guessedIncorrectly {
+    @media not prefers-reduced-motion {
+      animation: 500ms sadness;
     }
   }
 }
