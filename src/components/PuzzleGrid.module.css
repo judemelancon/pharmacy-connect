@@ -9,15 +9,46 @@
   height: 600px;
 }
 
+.group,
 .item {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 1rem 1.2rem;
-  border: none;
   border-radius: var(--border-radius);
+}
+
+.group {
+  grid-column-end: span 4;
+
+  &.group-0 {
+    background-color: var(--signature-gray);
+  }
+
+  &.group-1 {
+    background-color: var(--jayhawk-yellow);
+  }
+
+  &.group-2 {
+    background-color: var(--kansas-blue);
+    color: white;
+  }
+
+  &.group-3 {
+    background-color: var(--crimson);
+    color: white;
+  }
+}
+
+.item {
+  border: none;
   background: transparent;
   transition: background 400ms, border 200ms;
+
+  &:disabled {
+    color: black;
+  }
 
   &.todo {
     border: 1px solid black;
@@ -25,24 +56,6 @@
 
   &.active {
     background: #ffffffa0;
-  }
-
-  &.blue {
-    background-color: var(--kansas-blue);
-    color: white;
-  }
-
-  &.red {
-    background-color: var(--crimson);
-    color: white;
-  }
-
-  &.yellow {
-    background-color: var(--jayhawk-yellow);
-  }
-
-  &.grey {
-    background-color: var(--signature-gray);
   }
 }
 
@@ -58,8 +71,13 @@
 }
 
 .item,
-.connection {
+.connection,
+.solvedItems {
   font-size: 150%;
+}
+
+.connection {
+  font-weight: 700;
 }
 
 .strikes {

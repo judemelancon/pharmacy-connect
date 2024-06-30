@@ -26,20 +26,20 @@
         "name": "Warm Up",
         "groups": [
             {
-                "connection": "Antibiotics",
-                "items": [ "Amoxicillin", "Clindamycin", "Doxycycline", "Gentamicin" ]
+                "connection": "HMG-CoA Reductase Inhibitors",
+                "items": [ "Simvastatin", "Atorvastatin", "Lovastatin", "Pravastatin" ]
             },
             {
                 "connection": "Anticancer Monoclonal Antibodies",
                 "items": [ "Alemtuzumab", "Cetuximab", "Pembrolizumab", "Rituximab" ]
             },
             {
-                "connection": "HMG-CoA Reductase Inhibitors",
-                "items": [ "Simvastatin", "Atorvastatin", "Lovastatin", "Pravastatin" ]
-            },
-            {
                 "connection": "B Vitamins",
                 "items": [ "Niacin", "Pyridoxine", "Riboflavin", "Thiamine" ]
+            },
+            {
+                "connection": "Antibiotics",
+                "items": [ "Amoxicillin", "Clindamycin", "Doxycycline", "Gentamicin" ]
             }
         ]
     },
