@@ -17,7 +17,7 @@ export default function Page({ params: { slug } }: Readonly<{ params: { slug: st
 
   return (
     <main className={styles.main}>
-      <h1>Pharmacy Connect</h1>
+      <h1>OncRx Connect</h1>
 
       {puzzle
         ?

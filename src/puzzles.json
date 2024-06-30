@@ -48,20 +48,20 @@
         "name": "2024",
         "groups": [
             {
-                "connection": "A",
-                "items": [ "A", "AA", "AAA", "AAAA" ]
+                "connection": "Pregnancy Category X",
+                "items": [ "Lenalidomide", "Vismodegib", "Sonedegib", "Thalidomide" ]
             },
             {
-                "connection": "B",
-                "items": [ "B", "BB", "BBB", "BBBB" ]
+                "connection": "Yellow",
+                "items": [ "Taxol", "Methotrexate", "Taxotere", "Daptomycin" ]
             },
             {
-                "connection": "C",
-                "items": [ "C", "CC", "CCC", "CCCC" ]
+                "connection": "Refrigerated",
+                "items": [ "Etoposide", "Trametinib", "Chlorambucil", "Marinol" ]
             },
             {
-                "connection": "D",
-                "items": [ "D", "DD", "DDD", "DDDD" ]
+                "connection": "Subcutaneous",
+                "items": [ "Vidaza", "Dara", "Velcade", "Omacetaxine" ]
             }
         ]
     }
