@@ -1,0 +1,28 @@
+.qrCodeHolder {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+
+  @media (min-width: 400px) {
+    width: 80%;
+  }
+
+  @media (min-width: 600px) {
+    width: 75%;
+  }
+
+  @media (min-width: 800px) {
+    width: 60%;
+  }
+
+  @media (min-width: 1000px) {
+    width: 50%;
+  }
+}
+
+.qrCode {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+}

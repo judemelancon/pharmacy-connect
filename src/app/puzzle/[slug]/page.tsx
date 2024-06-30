@@ -4,6 +4,7 @@ import puzzles from "@/puzzles.json";
 import { Puzzle } from "@/types";
 import PuzzleGrid from "@/components/PuzzleGrid";
 import Instructions from "@/components/Instructions";
+import DynamicQR from "@/components/DynamicQR";
 
 export function generateStaticParams(): { slug: string }[] {
   return puzzles.map(puzzle => ({ slug: puzzle.slug }));
@@ -17,6 +18,7 @@ export default function Page({ params: { slug } }: Readonly<{ params: { slug: st
   return (
     <main className={styles.main}>
       <h1>Pharmacy Connect</h1>
+
       {puzzle
         ?
         <>
@@ -32,6 +34,8 @@ export default function Page({ params: { slug } }: Readonly<{ params: { slug: st
             <a href="/">The list of available puzzles is here.</a>
           </p>
         </>}
+
+      <DynamicQR />
     </main>
   );
 }
