@@ -43,7 +43,9 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  max-width: var(--max-width);
   padding: 8px;
+  margin: 0 auto;
 
   @media (min-width: 400px) {
     padding: 16px;
@@ -71,11 +73,13 @@ a {
 h1 {
   font-size: 200%;
   font-weight: 700;
+  line-height: 1.2;
 }
 
 h2 {
   font-size: 150%;
   font-weight: 600;
+  line-height: 1.2;
 }
 
 ul {
