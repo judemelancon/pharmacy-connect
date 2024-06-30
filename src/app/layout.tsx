@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans } from "next/font/google";
 import "./globals.css";
+import DynamicQR from "@/components/DynamicQR";
 
 const defaultFont = Noto_Sans({ subsets: ["latin"] });
 
@@ -17,6 +18,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       </head>
       <body className={defaultFont.className}>
         {children}
+        <footer>
+          <DynamicQR />
+        </footer>
       </body>
     </html>
   );
