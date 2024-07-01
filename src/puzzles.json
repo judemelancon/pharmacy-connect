@@ -45,8 +45,9 @@
         ]
     },
     {
-        "slug": "2024",
-        "name": "2024",
+        "slug": "practice",
+        "name": "Practice",
+        "secret": true,
         "groups": [
             {
                 "connection": "Pregnancy Category X",
@@ -63,6 +64,52 @@
             {
                 "connection": "Subcutaneous",
                 "items": [ "Vidaza", "Dara", "Velcade", "Omacetaxine" ]
+            }
+        ]
+    },
+    {
+        "slug": "2024a",
+        "name": "2024 A",
+        "secret": true,
+        "groups": [
+            {
+                "connection": "Types of Transplants",
+                "items": [ "Auto", "Cord", "Haplo", "MUD" ]
+            },
+            {
+                "connection": "Compounding Actions",
+                "items": [ "Clamp", "Prime", "Pump", "Spike" ]
+            },
+            {
+                "connection": "_____ Room",
+                "items": [ "Ante", "Buffer", "Clean","Compounding" ]
+            },
+            {
+                "connection": "Trastuzumab Biosimilar Suffixes",
+                "items": [ "anns", "dkst", "pkrb", "qyyp" ]
+            }
+        ]
+    },
+    {
+        "slug": "2024b",
+        "name": "2024 B",
+        "secret": true,
+        "groups": [
+            {
+                "connection": "FOLFIRINOX",
+                "items": [ "Folinic Acid", "5-fluorouracil", "Oxaliplatin", "Irinotecan" ]
+            },
+            {
+                "connection": "Early Breast Cancer Adjuvants",
+                "items": [ "Capecitabine", "Pembrolizumab", "Trastuzumab", "Trastuzumab emtansine" ]
+            },
+            {
+                "connection": "AML Induction",
+                "items": [ "7+3", "FLAG", "Vidaza + Ven", "Vyxeos" ]
+            },
+            {
+                "connection": "MM + SQ",
+                "items": [ "Daratumumab", "Elranatamab", "Talquetamab", "Teclistamab" ]
             }
         ]
     }
