@@ -57,7 +57,7 @@ export default function PuzzleGrid({ puzzle }: Readonly<{ puzzle: Puzzle }>) {
         const timeoutId = setTimeout(() => {
             setUnsolvedItems(previous => previous.map(item => ({ ...item, active: false })));
             setShowingIncorrectGuess(false);
-        }, 1000);
+        }, 500);
         return () => clearTimeout(timeoutId);
     }, [showingIncorrectGuess]);
 
