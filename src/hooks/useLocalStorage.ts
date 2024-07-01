@@ -44,9 +44,9 @@ export default function useLocalStorage<T>(key: string, defaultValue: T): [T, Di
         };
     }, [key, updateValue]);
 
-    useEffect(() => {
-        updateValue();
-    }, [updateValue]);
+    // Parsing the item fresh means that there's an issue with an infinite loop from state changes,
+    //  so run this only once by omitting the dependency on updateValue.
+    useEffect(updateValue, []);
 
     return [state, setValue];
 }
