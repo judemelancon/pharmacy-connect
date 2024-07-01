@@ -101,14 +101,14 @@
             },
             {
                 "connection": "Early Breast Cancer Adjuvants",
-                "items": [ "Capecitabine", "Pembrolizumab", "Trastuzumab", "Trastuzumab emtansine" ]
+                "items": [ "Capecitabine", "Pembrolizumab", "Trastuzumab", "Ado-trastuzumab emtansine" ]
             },
             {
                 "connection": "AML Induction",
-                "items": [ "7+3", "FLAG", "Vidaza + Ven", "Vyxeos" ]
+                "items": [ "7+3", "FLAG", "Vidaza + Venetoclax", "Vyxeos" ]
             },
             {
-                "connection": "MM + SQ",
+                "connection": "MM Drugs Given SQ",
                 "items": [ "Daratumumab", "Elranatamab", "Talquetamab", "Teclistamab" ]
             }
         ]
