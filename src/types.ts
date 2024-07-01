@@ -3,10 +3,6 @@ export type Group = {
     items: string[];
 };
 
-export type IndexedGroup = Group & {
-    index: number;
-};
-
 export type Puzzle = {
     slug: string;
     name: string;

@@ -3,7 +3,8 @@
 import { useCallback, useEffect, useState } from "react";
 import classNames from "classnames";
 import styles from "./PuzzleGrid.module.css";
-import { Puzzle, IndexedGroup, Item } from "@/types";
+import { Puzzle, Item } from "@/types";
+import useLocalStorage from "@/hooks/useLocalStorage";
 import shuffle from "@/util/shuffle";
 import FireworksBattery from "./FireworksBattery";
 
@@ -14,9 +15,10 @@ const InitialStrikes = 4;
 export default function PuzzleGrid({ puzzle }: Readonly<{ puzzle: Puzzle }>) {
     const [initialized, setInitialized] = useState(false);
     const [unsolvedItems, setUnsolvedItems] = useState<Item[]>(extractItems(puzzle));
-    const [solvedGroups, setSolvedGroups] = useState<IndexedGroup[]>([]);
+    const [solvedGroups, setSolvedGroups] = useLocalStorage<number[]>(`solved-${puzzle.slug}`, []);
+    const [checking, setChecking] = useState(false);
     const [showingIncorrectGuess, setShowingIncorrectGuess] = useState(false);
-    const [strikes, setStrikes] = useState(InitialStrikes);
+    const [strikes, setStrikes] = useLocalStorage(`strikes-${puzzle.slug}`, InitialStrikes);
 
     useEffect(() => {
         // Shuffling at initialization time produces hydration errors.
@@ -25,19 +27,29 @@ export default function PuzzleGrid({ puzzle }: Readonly<{ puzzle: Puzzle }>) {
     }, []);
 
     useEffect(() => {
+        setUnsolvedItems(previous => previous.filter(item => !solvedGroups.some(groupIndex => puzzle.groups[groupIndex].items.includes(item.text))));
+    }, [puzzle.groups, solvedGroups]);
+
+    useEffect(() => {
+        if (!checking)
+            return;
+        setChecking(false);
         const activeItems = unsolvedItems.filter(item => item.active);
         if (activeItems.length === 4) {
             const matchingGroupIndex = puzzle.groups.findIndex(group => activeItems.every(item => group.items.includes(item.text)));
             if (matchingGroupIndex >= 0) {
+                // Removing the items is not strictly necessary,
+                //  as the failsafe for removing items from groups previously solved would catch it;
+                //  however, it avoids a render.
                 setUnsolvedItems(previous => previous.filter(item => !item.active));
-                setSolvedGroups(previous => [...previous, { ...puzzle.groups[matchingGroupIndex], index: matchingGroupIndex }]);
+                setSolvedGroups(previous => [...previous, matchingGroupIndex]);
             }
             else {
                 setStrikes(previous => previous - 1);
                 setShowingIncorrectGuess(true);
             }
         }
-    }, [unsolvedItems, puzzle.groups]);
+    }, [puzzle.groups, unsolvedItems, checking, setStrikes, setSolvedGroups]);
 
     useEffect(() => {
         if (!showingIncorrectGuess)
@@ -55,6 +67,7 @@ export default function PuzzleGrid({ puzzle }: Readonly<{ puzzle: Puzzle }>) {
                 const i = previous.findIndex(item => item.text === target.text);
                 return previous.with(i, { ...previous[i], active: !target.active });
             });
+            setChecking(true);
         },
         []);
 
@@ -63,10 +76,10 @@ export default function PuzzleGrid({ puzzle }: Readonly<{ puzzle: Puzzle }>) {
             {initialized
                 ?
                 <>
-                    {solvedGroups.map(group => (
-                        <div key={group.connection} className={classNames(styles.group, styles[`group-${group.index}`])}>
-                            <span className={styles.connection}>{group.connection}</span>
-                            <span className={styles.solvedItems}>{group.items.join(', ')}</span>
+                    {solvedGroups.map(groupIndex => (
+                        <div key={puzzle.groups[groupIndex].connection} className={classNames(styles.group, styles[`group-${groupIndex}`])}>
+                            <span className={styles.connection}>{puzzle.groups[groupIndex].connection}</span>
+                            <span className={styles.solvedItems}>{puzzle.groups[groupIndex].items.join(', ')}</span>
                         </div>
                     ))}
                     {unsolvedItems.map(item => (
