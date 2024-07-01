@@ -4,7 +4,7 @@ import Instructions from "@/components/Instructions";
 export default function Home() {
   return (
     <main>
-      <h1><a href="/">OncRx Connect</a></h1>
+      <h1><a href={`${process.env.BASE_PATH}/`}>OncRx Connect</a></h1>
       <Instructions />
       <h2>Available Puzzles</h2>
       <ul>
