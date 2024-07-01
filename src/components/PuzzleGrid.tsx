@@ -5,7 +5,9 @@ import classNames from "classnames";
 import styles from "./PuzzleGrid.module.css";
 import { Puzzle, IndexedGroup, Item } from "@/types";
 import shuffle from "@/util/shuffle";
+import FireworksBattery from "./FireworksBattery";
 
+const TotalGroups = 4;
 const TotalItems = 16;
 const InitialStrikes = 4;
 
@@ -86,6 +88,7 @@ export default function PuzzleGrid({ puzzle }: Readonly<{ puzzle: Puzzle }>) {
         <div className={styles.strikes}>
             <span>{[...Array(InitialStrikes)].map((_, i) => i >= strikes ? '😞' : '😏')}</span>
         </div>
+        <FireworksBattery firing={solvedGroups.length === TotalGroups} />
     </>);
 }
 
