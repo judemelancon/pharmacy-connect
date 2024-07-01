@@ -164,7 +164,7 @@
 
   .guessedIncorrectly {
     @media not prefers-reduced-motion {
-      animation: 500ms sadness;
+      animation: 1s sadness;
     }
   }
 }
