@@ -70,7 +70,6 @@
     {
         "slug": "2024a",
         "name": "2024 A",
-        "secret": true,
         "groups": [
             {
                 "connection": "Types of Transplants",
@@ -93,7 +92,6 @@
     {
         "slug": "2024b",
         "name": "2024 B",
-        "secret": true,
         "groups": [
             {
                 "connection": "FOLFIRINOX",
